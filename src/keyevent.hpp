@@ -1,26 +1,17 @@
 #pragma once
 
 #include <GLFW/glfw3.h>
-#include <iostream>
 
 class KeyEvent
 {
 public:
     KeyEvent() = default;
-    ~KeyEvent() = default;
-    void resetKeys() {w = false; s = false; a = false; d = false;}
-    bool wPressed() {return w;}
-    void setWPressed(bool status) {w = status;}
-    bool sPressed() {return s;}
-    void setSPressed(bool status) {s = status;}
-    bool aPressed() {return a;}
-    void setAPressed(bool status) {a = status;}
-    bool dPressed() {return d;}
-    void setDPressed(bool status) {d = status;}
+    virtual ~KeyEvent() = default;
+    virtual void resetKeys() = 0;
+    static void checkKeyEvent(GLFWwindow *window, int key, int scancode, int action, int mods);
+    static void setKeyEvent(KeyEvent *newKeyEvent);
 
-private:
-    bool w = false;
-    bool s = false;
-    bool a = false;
-    bool d = false;
+protected:
+    static KeyEvent *keyEvent;
+    virtual void handleKeyEvent(int key, int action) = 0;
 };

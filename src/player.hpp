@@ -4,7 +4,7 @@ class Player
 {
 public:
     Player(int xpos, int ypos, int zpos, double rotation);
-    ~Player();
+    ~Player() = default;
 
 private:
     int x;    // Player x position
