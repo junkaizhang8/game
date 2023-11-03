@@ -11,11 +11,12 @@ class Window
 {
 public:
     Window();
-    ~Window();
-    int init(int width, int , const char *title);
-    void display();
-    bool isRunning();
-    void close();
-private:
+    virtual ~Window() = default;
+    virtual int init(int width, int height, const char *title) = 0;
+    virtual void display() = 0;
+    virtual bool isRunning() = 0;
+    virtual void close() = 0;
+
+protected:
     GLFWwindow *window;
 };
