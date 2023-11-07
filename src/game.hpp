@@ -2,22 +2,24 @@
 
 #include <GLFW/glfw3.h>
 #include "window.hpp"
-#include "gamewindow.hpp"
+#include "game.hpp"
 #include "keyevent.hpp"
 #include "gamekeyevent.hpp"
+#include "player.hpp"
 
 void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods);
 
-class GameWindow : public Window
+class Game : public Window
 {
 public:
-    GameWindow() = default;
-    ~GameWindow();
-    int init(int width, int height, const char *title) override;
+    Game() = default;
+    ~Game();
+    int init(int width, int height, int pixelScale, const char *title) override;
     void display() override;
     bool isRunning() override;
     void close() override;
 
 private:
     GameKeyEvent keys;      // Store key press statuses of movement keys
+    Player player;
 };

@@ -10,8 +10,10 @@ public:
     virtual void resetKeys() = 0;
     static void checkKeyEvent(GLFWwindow *window, int key, int scancode, int action, int mods);
     static void setKeyEvent(KeyEvent *newKeyEvent);
+    static void setKeyCallback(GLFWwindow *window);
+    static bool windowShouldClose(GLFWwindow *window, int key, int action);
 
 protected:
     static KeyEvent *keyEvent;
-    virtual void handleKeyEvent(int key, int action) = 0;
+    virtual void handleKeyEvent(GLFWwindow *window, int key, int action) = 0;
 };

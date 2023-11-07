@@ -10,7 +10,7 @@ void GameKeyEvent::resetKeys()
     d = false;
 }
 
-void GameKeyEvent::handleKeyEvent(int key, int action)
+void GameKeyEvent::handleKeyEvent(GLFWwindow *window, int key, int action)
 {
     if (action == GLFW_PRESS)
     {
