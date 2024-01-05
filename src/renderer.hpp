@@ -11,10 +11,10 @@ public:
     void setColour(int red, int green, int blue);
     void setColour(float red, float green, float blue);
     void clearScreen();
-    void drawPixel(int x, int y);
-    // void drawPixel(float x, float y);
-    // void drawLine(int x1, int y1, int x2, int y2);
-    // void drawLine(float x1, float y1, float x2, float y2);
+    void drawPixel(double x, double y);
+    void drawRect(double x, double y, double width, double height);
+    void drawFilledCircle(double x, double y, double r, int numSegments = 100);
+    void drawHollowCircle(double x, double y, double r, int numSegments = 100);
 private:
     int pixelScale;
     int pixelScaleHalf;

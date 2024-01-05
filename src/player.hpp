@@ -2,9 +2,9 @@
 
 #include "gamekeyevent.hpp"
 
-#define DEFAULT_PLAYER_X 10
-#define DEFAULT_PLAYER_Y 10
-#define DEFAULT_PLAYER_Z 10
+#define DEFAULT_PLAYER_X 40
+#define DEFAULT_PLAYER_Y 40
+#define DEFAULT_PLAYER_Z 40
 #define DEFAULT_PLAYER_R 0.0
 
 class Player

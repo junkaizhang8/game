@@ -2,16 +2,17 @@
 #include <GLFW/glfw3.h>
 #include "window.hpp"
 #include "game.hpp"
+#include "editor.hpp"
 #include "player.hpp"
 
 int main(int argc, char *argv[])
 {
-    Game game;
-    game.init(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT, DEFAULT_PIXEL_SCALE, "Game Window");
+    Editor game;
+    game.init(DEFAULT_EDITOR_WIDTH, DEFAULT_EDITOR_HEIGHT, DEFAULT_PIXEL_SCALE, "Editor Window");
 
     while (game.isRunning())
     {
-        game.display();
+        game.run();
     }
 
     game.close();

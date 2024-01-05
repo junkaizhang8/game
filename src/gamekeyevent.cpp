@@ -1,6 +1,7 @@
 #include <GLFW/glfw3.h>
 #include "keyevent.hpp"
 #include "gamekeyevent.hpp"
+#include <iostream>
 
 void GameKeyEvent::resetKeys()
 {
@@ -8,6 +9,8 @@ void GameKeyEvent::resetKeys()
     s = false;
     a = false;
     d = false;
+    left = false;
+    right = false;
 }
 
 void GameKeyEvent::handleKeyEvent(GLFWwindow *window, int key, int action)
@@ -28,6 +31,12 @@ void GameKeyEvent::handleKeyEvent(GLFWwindow *window, int key, int action)
         case (GLFW_KEY_D):
             d = true;
             break;
+        case (GLFW_KEY_LEFT):
+            left = true;
+            break;
+        case (GLFW_KEY_RIGHT):
+            right = true;
+            break;
         default:
             break;
         }
@@ -47,6 +56,12 @@ void GameKeyEvent::handleKeyEvent(GLFWwindow *window, int key, int action)
             break;
         case (GLFW_KEY_D):
             d = false;
+            break;
+        case (GLFW_KEY_LEFT):
+            left = false;
+            break;
+        case (GLFW_KEY_RIGHT):
+            right = false;
             break;
         default:
             break;

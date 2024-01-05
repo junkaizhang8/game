@@ -1,0 +1,8 @@
+#pragma once
+
+#include "grid.hpp"
+
+#define DEFAULT_MODE_MENU_WIDTH DEFAULT_GRID_WIDTH
+#define DEFAULT_MODE_MENU_HEIGHT 15
+#define DEFAULT_MODE_MENU_X 0
+#define DEFAULT_MODE_MENU_Y 0

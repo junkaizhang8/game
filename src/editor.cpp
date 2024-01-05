@@ -4,19 +4,19 @@
 #include <sstream>
 #include <GLFW/glfw3.h>
 #include "keyevent.hpp"
-#include "gamekeyevent.hpp"
-#include "game.hpp"
+#include "editorkeyevent.hpp"
+#include "editor.hpp"
 
-Game::~Game()
+Editor::~Editor()
 {
     if (window)
     {
         close();
     }
-    std::cout << "Game window destroyed successfully." << std::endl;
+    std::cout << "Editor window destroyed successfully." << std::endl;
 }
 
-int Game::init(int width, int height, int pixelScale, const char *title)
+int Editor::init(int width, int height, int pixelScale, const char *title)
 {
     if (!glfwInit())
     {
@@ -51,38 +51,53 @@ int Game::init(int width, int height, int pixelScale, const char *title)
     KeyEvent::setKeyEvent(&keys);
     KeyEvent::setKeyCallback(window);
 
+    cursor.setPixelScale(pixelScale);
+
+    grid.init(DEFAULT_GRID_X, DEFAULT_GRID_Y, DEFAULT_GRID_WIDTH, DEFAULT_GRID_HEIGHT, renderer);
+
     return INIT_SUCCESS;
 }
 
-void Game::run()
+void Editor::run()
 {
+    update();
     display();
 }
 
-void Game::update() {}
+void Editor::update()
+{
+    double x;
+    double y;
+    cursor.getScaledCursorPos(window, &x, &y);
+    std::cout << x << " " << y << std::endl;
+    
+    // Wall mode
+    if (keys.fPressed())
+    {
 
-void Game::display()
+    }
+    clock.updateClock();
+}
+
+void Editor::display()
 {   
     if (clock.updateFrame())
     {
-        renderer->setColour(255, 0, 0);
-        player.updatePosition(keys);
         renderer->clearScreen();
-        renderer->drawPixel(player.getX(), player.getY());
+        grid.drawGrid();
         renderer->setColour(0, 255, 0);
         renderer->drawHollowCircle(100, 30, 1);
         glfwSwapBuffers(window);
     }
     glfwPollEvents();
-    clock.updateClock();
 }
 
-bool Game::isRunning()
+bool Editor::isRunning()
 {
     return !glfwWindowShouldClose(window);
 }
 
-void Game::close()
+void Editor::close()
 {
     glfwDestroyWindow(window);
     glfwTerminate();

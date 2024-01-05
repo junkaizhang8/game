@@ -19,5 +19,7 @@ private:
     bool s = false;
     bool a = false;
     bool d = false;
+    bool left = false;
+    bool right = false;
     void handleKeyEvent(GLFWwindow *window, int key, int action) override;
 };

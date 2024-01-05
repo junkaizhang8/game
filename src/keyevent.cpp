@@ -39,6 +39,7 @@ bool KeyEvent::windowShouldClose(GLFWwindow *window, int key, int action)
         return false;
     }
 
+    // ESC to quit
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
     {
         glfwSetWindowShouldClose(window, GLFW_TRUE);
